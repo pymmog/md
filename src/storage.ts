@@ -1,6 +1,6 @@
 const DRAFT_KEY = "md.draft";
 const THEME_KEY = "md.theme";
-const VIM_KEY = "md.vim";
+const VIM_KEY = "md.vimOn";
 
 function read(key: string): string | null {
   try {
@@ -39,7 +39,7 @@ export function saveThemePref(pref: "light" | "dark" | "system"): void {
 }
 
 export function loadVimEnabled(): boolean {
-  return read(VIM_KEY) === "1";
+  return read(VIM_KEY) !== "0";
 }
 
 export function saveVimEnabled(enabled: boolean): void {

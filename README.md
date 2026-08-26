@@ -1,6 +1,6 @@
 # md
 
-Split-pane markdown editor with a live preview. Formatting toolbar, GitHub-flavored markdown, light/dark/system theme (OKLCH), optional Vim keys, copy and download.
+Split-pane markdown editor with a live preview. Formatting toolbar, GitHub-flavored markdown, light/dark/system theme (OKLCH), Vim keys (can be turned off), copy and download.
 
 ## Run
 
@@ -16,4 +16,4 @@ npm run build
 npm run preview
 ```
 
-Drafts autosave in `localStorage`. **Sample** restores the starter document. **Vim** is off until you turn it on.
+Drafts autosave in `localStorage`. **Sample** restores the starter document. **Vim** is on until you turn it off.
