@@ -15,7 +15,6 @@ import {
   highlightActiveLine,
   highlightActiveLineGutter,
   keymap,
-  lineNumbers,
 } from "@codemirror/view";
 import { getCM, vim } from "@replit/codemirror-vim";
 import {
@@ -26,6 +25,7 @@ import {
 } from "react";
 import { applyFormat, type FormatAction } from "./format.ts";
 import { editorTheme } from "./cmTheme.ts";
+import { relativeLineNumbers } from "./relativeLineNumbers.ts";
 
 export type EditorHandle = {
   applyFormat: (action: FormatAction) => void;
@@ -173,7 +173,7 @@ export function MarkdownEditor({
     const state = EditorState.create({
       doc: startDoc,
       extensions: [
-        lineNumbers(),
+        relativeLineNumbers,
         highlightActiveLineGutter(),
         highlightActiveLine(),
         drawSelection(),

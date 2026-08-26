@@ -46,6 +46,10 @@ export function editorTheme(dark: boolean): Extension {
           color: "var(--fg-muted)",
           borderRight: "1px solid var(--border)",
         },
+        ".cm-lineNumbers .cm-gutterElement": {
+          fontVariantNumeric: "tabular-nums",
+          minWidth: "2.4ch",
+        },
         ".cm-activeLine": {
           backgroundColor: "var(--bg-elevated)",
         },
