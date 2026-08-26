@@ -1,14 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="oklch(0.5 0.11 230)" />
-  <text
-    x="16"
-    y="22"
-    text-anchor="middle"
-    font-size="16"
-    font-family="ui-sans-serif, system-ui, sans-serif"
-    font-weight="700"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <style>
+    .bg { fill: oklch(0.5 0.11 230); }
+    .fg { fill: oklch(0.99 0.004 95); }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: oklch(0.78 0.09 230); }
+      .fg { fill: oklch(0.2 0.02 260); }
+    }
+  </style>
+  <rect class="bg" width="16" height="16" rx="4" fill="oklch(0.5 0.11 230)" />
+  <path
+    class="fg"
     fill="oklch(0.99 0.004 95)"
-  >
-    M
-  </text>
+    d="M2 13V3h2l1 5 1-5h2v10H6V8l-1 4-1-4v5zm8-10h2v4h1l-2 6-2-6h1V3z"
+  />
 </svg>
