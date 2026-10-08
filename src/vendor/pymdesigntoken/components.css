@@ -1,0 +1,102 @@
+/**
+ * PymDesignToken — board components
+ * Generated from tokens/tokens.json by scripts/build.mjs. Do not edit by hand.
+ * Source: src/components.css
+ */
+@import "./tokens.css";
+
+/* Board components. Colors, type, and radii come from tokens.
+   12px block padding, 10px badge padding, and the 6–7px dot sit between
+   the printed space steps. They are component metrics, not new space tokens. */
+
+.pym-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pym-space-8);
+  margin: 0;
+  padding: 12px var(--pym-space-16);
+  border: 1px solid var(--pym-button-primary-border);
+  border-radius: var(--pym-radius-control);
+  background: var(--pym-button-primary-bg);
+  color: var(--pym-button-primary-text);
+  font-family: var(--pym-font-sans);
+  font-size: var(--pym-font-size-ui);
+  font-weight: var(--pym-weight-medium);
+  line-height: var(--pym-leading-ui);
+  letter-spacing: var(--pym-tracking-ui);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  appearance: none;
+}
+
+.pym-btn:hover {
+  background-color: color-mix(in srgb, var(--pym-button-primary-bg) 86%, var(--pym-button-primary-text));
+}
+
+.pym-btn:focus-visible {
+  outline: var(--pym-focus-width) solid var(--pym-focus);
+  outline-offset: var(--pym-focus-offset);
+}
+
+.pym-btn--secondary {
+  background: var(--pym-button-secondary-bg);
+  color: var(--pym-button-secondary-text);
+  border-color: var(--pym-button-secondary-border);
+}
+
+.pym-btn--secondary:hover {
+  background-color: color-mix(in srgb, var(--pym-button-secondary-text) 8%, transparent);
+}
+
+.pym-badge {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: var(--pym-radius-pill);
+  background: var(--pym-status-bg);
+  color: var(--pym-status-text);
+  font-family: var(--pym-font-sans);
+  font-size: var(--pym-font-size-caption);
+  font-weight: var(--pym-weight-medium);
+  line-height: var(--pym-leading-caption);
+  letter-spacing: 0;
+}
+
+.pym-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: var(--pym-radius-pill);
+  background: var(--pym-status-dot);
+}
+
+.pym-eyebrow {
+  margin: 0;
+  font-family: var(--pym-font-mono);
+  font-size: var(--pym-font-size-eyebrow);
+  font-weight: var(--pym-weight-medium);
+  line-height: var(--pym-leading-eyebrow);
+  letter-spacing: var(--pym-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--pym-text-muted);
+}
+
+.pym-hairline {
+  border: 1px solid var(--pym-border);
+  border-radius: var(--pym-radius-card);
+}
+
+hr.pym-hairline {
+  height: 0;
+  margin: 0;
+  border-width: 1px 0 0;
+  border-radius: 0;
+  background: none;
+}
+
