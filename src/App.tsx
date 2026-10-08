@@ -20,7 +20,7 @@ import {
   type VimModeLabel,
 } from "./editor/MarkdownEditor.tsx";
 import type { FormatAction } from "./editor/format.ts";
-import { copyText } from "./clipboard.ts";
+import { copyRichHtml, copyText } from "./clipboard.ts";
 import { exportHtmlDocument, firstHeadingTitle } from "./export/html.ts";
 import { countDoc } from "./markdown/counts.ts";
 import { renderMarkdown, type OutlineItem } from "./markdown/render.ts";
@@ -138,8 +138,10 @@ export function App() {
 
   const onCopy = useCallback(
     async (kind: CopyKind) => {
-      const text = kind === "markdown" ? doc : rendered.html;
-      const ok = await copyText(text);
+      const ok =
+        kind === "markdown"
+          ? await copyText(doc)
+          : await copyRichHtml(rendered.html);
       if (!ok) {
         return;
       }

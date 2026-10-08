@@ -2,7 +2,7 @@ import type { FormatAction } from "../editor/format.ts";
 import type { ThemePref } from "../theme/useTheme.ts";
 
 export type ViewMode = "split" | "editor" | "preview";
-export type CopyKind = "markdown" | "html";
+export type CopyKind = "markdown" | "richtext";
 export type DownloadKind = "markdown" | "html";
 
 type ToolbarProps = {
@@ -210,8 +210,8 @@ export function Toolbar({
         <button type="button" onClick={() => onCopy("markdown")}>
           {copied === "markdown" ? "Copied" : "Copy MD"}
         </button>
-        <button type="button" onClick={() => onCopy("html")}>
-          {copied === "html" ? "Copied" : "Copy HTML"}
+        <button type="button" onClick={() => onCopy("richtext")}>
+          {copied === "richtext" ? "Copied" : "Copy rich text"}
         </button>
         <button type="button" onClick={onOpen}>
           Open
