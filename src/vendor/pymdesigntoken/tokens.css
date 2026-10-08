@@ -1,0 +1,154 @@
+/**
+ * PymDesignToken — custom properties
+ * Generated from tokens/tokens.json by scripts/build.mjs. Do not edit by hand.
+ *
+ * Light is the default on :root. Dark applies under [data-theme="dark"],
+ * and under prefers-color-scheme: dark unless data-theme="light" is set.
+ * A nested [data-theme="light"] or [data-theme="dark"] restyles that subtree.
+ */
+:root {
+  /* Primitives. Available in every theme. */
+  /* color */
+  --pym-color-forest: #19382B;
+  --pym-color-moss: #47634D;
+  --pym-color-sage: #CAD8C5;
+  --pym-color-oat: #F3EFE6;
+  --pym-color-beige: #DCCCB1;
+  --pym-color-brown: #8B6549;
+  --pym-color-forest-dark: #101E18;
+  --pym-color-surface-dark: #1B2D23;
+  --pym-color-moss-deep: #425E49;
+  --pym-color-hairline-light: rgba(25, 56, 43, 0.18);
+  --pym-color-hairline-dark: rgba(202, 216, 197, 0.24);
+  /* space */
+  --pym-space-8: 8px;
+  --pym-space-16: 16px;
+  --pym-space-24: 24px;
+  --pym-space-48: 48px;
+  --pym-space-96: 96px;
+  /* radius */
+  --pym-radius-card: 2px;
+  --pym-radius-control: 4px;
+  --pym-radius-pill: 999px;
+  /* fontFamily */
+  --pym-font-sans: var(--font-geist-sans, "Geist Sans"), "Geist", ui-sans-serif, system-ui, sans-serif;
+  --pym-font-mono: var(--font-geist-mono, "Geist Mono"), "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  /* fontSize */
+  --pym-font-size-display: 64px;
+  --pym-font-size-title: 36px;
+  --pym-font-size-heading: 22px;
+  --pym-font-size-body: 16px;
+  --pym-font-size-ui: 14px;
+  --pym-font-size-caption: 12px;
+  --pym-font-size-eyebrow: 11px;
+  /* fontWeight */
+  --pym-weight-regular: 400;
+  --pym-weight-medium: 500;
+  --pym-weight-semibold: 600;
+  /* lineHeight */
+  --pym-leading-display: 0.95;
+  --pym-leading-title: 1.05;
+  --pym-leading-heading: 1.2;
+  --pym-leading-body: 1.5;
+  --pym-leading-ui: 1.25;
+  --pym-leading-caption: 1.4;
+  --pym-leading-eyebrow: 1.35;
+  /* letterSpacing */
+  --pym-tracking-display: -0.04em;
+  --pym-tracking-title: -0.03em;
+  --pym-tracking-heading: -0.02em;
+  --pym-tracking-wordmark: -0.03em;
+  --pym-tracking-ui: -0.01em;
+  --pym-tracking-normal: 0em;
+  --pym-tracking-caption: 0.02em;
+  --pym-tracking-eyebrow: 0.14em;
+  /* shadow */
+  --pym-shadow-none: none;
+  /* focus */
+  --pym-focus-width: 2px;
+  --pym-focus-offset: 2px;
+}
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --pym-bg: #F3EFE6; /* oat */
+  --pym-surface: #F3EFE6; /* oat */
+  --pym-text: #19382B; /* forest */
+  --pym-text-muted: #47634D; /* moss */
+  --pym-text-muted-accessible: #425E49; /* moss-deep */
+  --pym-text-on-light: #19382B; /* forest */
+  --pym-border: rgba(25, 56, 43, 0.18); /* hairline-light */
+  --pym-accent: #19382B; /* forest */
+  --pym-accent-contrast: #F3EFE6; /* oat */
+  --pym-button-primary-bg: #19382B; /* forest */
+  --pym-button-primary-text: #F3EFE6; /* oat */
+  --pym-button-primary-border: #19382B; /* forest */
+  --pym-button-secondary-bg: transparent;
+  --pym-button-secondary-text: #19382B; /* forest */
+  --pym-button-secondary-border: #19382B; /* forest */
+  --pym-status-bg: #8B6549; /* brown */
+  --pym-status-text: #F3EFE6; /* oat */
+  --pym-status-dot: #DCCCB1; /* beige */
+  --pym-focus: #19382B; /* forest */
+  --pym-ticker-bg: #CAD8C5; /* sage */
+  --pym-ticker-text: #19382B; /* forest */
+  --pym-surface-warm: #DCCCB1; /* beige */
+  --pym-surface-play: #CAD8C5; /* sage */
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --pym-bg: #101E18; /* forest-dark */
+  --pym-surface: #1B2D23; /* surface-dark */
+  --pym-text: #F3EFE6; /* oat */
+  --pym-text-muted: #CAD8C5; /* sage */
+  --pym-text-muted-accessible: #425E49; /* moss-deep */
+  --pym-text-on-light: #19382B; /* forest */
+  --pym-border: rgba(202, 216, 197, 0.24); /* hairline-dark */
+  --pym-accent: #CAD8C5; /* sage */
+  --pym-accent-contrast: #101E18; /* forest-dark */
+  --pym-button-primary-bg: #CAD8C5; /* sage */
+  --pym-button-primary-text: #101E18; /* forest-dark */
+  --pym-button-primary-border: #CAD8C5; /* sage */
+  --pym-button-secondary-bg: transparent;
+  --pym-button-secondary-text: #F3EFE6; /* oat */
+  --pym-button-secondary-border: #F3EFE6; /* oat */
+  --pym-status-bg: #8B6549; /* brown */
+  --pym-status-text: #F3EFE6; /* oat */
+  --pym-status-dot: #DCCCB1; /* beige */
+  --pym-focus: #CAD8C5; /* sage */
+  --pym-ticker-bg: #1B2D23; /* surface-dark */
+  --pym-ticker-text: #CAD8C5; /* sage */
+  --pym-surface-warm: #DCCCB1; /* beige */
+  --pym-surface-play: #47634D; /* moss */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  --pym-bg: #101E18; /* forest-dark */
+  --pym-surface: #1B2D23; /* surface-dark */
+  --pym-text: #F3EFE6; /* oat */
+  --pym-text-muted: #CAD8C5; /* sage */
+  --pym-text-muted-accessible: #425E49; /* moss-deep */
+  --pym-text-on-light: #19382B; /* forest */
+  --pym-border: rgba(202, 216, 197, 0.24); /* hairline-dark */
+  --pym-accent: #CAD8C5; /* sage */
+  --pym-accent-contrast: #101E18; /* forest-dark */
+  --pym-button-primary-bg: #CAD8C5; /* sage */
+  --pym-button-primary-text: #101E18; /* forest-dark */
+  --pym-button-primary-border: #CAD8C5; /* sage */
+  --pym-button-secondary-bg: transparent;
+  --pym-button-secondary-text: #F3EFE6; /* oat */
+  --pym-button-secondary-border: #F3EFE6; /* oat */
+  --pym-status-bg: #8B6549; /* brown */
+  --pym-status-text: #F3EFE6; /* oat */
+  --pym-status-dot: #DCCCB1; /* beige */
+  --pym-focus: #CAD8C5; /* sage */
+  --pym-ticker-bg: #1B2D23; /* surface-dark */
+  --pym-ticker-text: #CAD8C5; /* sage */
+  --pym-surface-warm: #DCCCB1; /* beige */
+  --pym-surface-play: #47634D; /* moss */
+  }
+}
