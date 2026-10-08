@@ -3,29 +3,22 @@ import tokensCss from "../vendor/pymdesigntoken/tokens.css?raw";
 import type { ResolvedTheme } from "../theme/useTheme.ts";
 
 const fontCss = `@font-face {
-  font-family: "Geist Sans";
+  font-family: "Geist Variable";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist:vf@5.3.0/latin-wght-normal.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Geist";
+  font-family: "Geist Mono Variable";
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Geist Mono";
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+  src: url("https://cdn.jsdelivr.net/fontsource/fonts/geist-mono:vf@5.3.0/latin-wght-normal.woff2") format("woff2");
 }
 :root {
-  --font-geist-sans: "Geist Sans";
-  --font-geist-mono: "Geist Mono";
+  --font-geist-sans: "Geist Variable";
+  --font-geist-mono: "Geist Mono Variable";
 }`;
 
 export function exportHtmlDocument(args: {

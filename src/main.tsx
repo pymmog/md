@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
 import { loadThemePref } from "./storage.ts";
 import { applyDocumentTheme, resolveTheme } from "./theme/useTheme.ts";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist-mono";
 import "./styles.css";
 
 const pref = loadThemePref();
