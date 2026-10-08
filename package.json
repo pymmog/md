@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "sync-tokens": "node scripts/sync-tokens.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -16,6 +17,8 @@
     "@codemirror/search": "^6.7.1",
     "@codemirror/state": "^6.7.1",
     "@codemirror/view": "^6.43.9",
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/geist-mono": "^5.3.0",
     "@lezer/highlight": "^1.2.3",
     "@replit/codemirror-vim": "^6.4.0",
     "dompurify": "^3.4.14",

@@ -1,4 +1,11 @@
+@import "./vendor/pymdesigntoken/tokens.css";
+@import "./vendor/pymdesigntoken/components.css";
 @import "./preview/preview.css";
+
+:root {
+  --font-geist-sans: "Geist Variable";
+  --font-geist-mono: "Geist Mono Variable";
+}
 
 *,
 *::before,
@@ -17,101 +24,89 @@ body {
 }
 
 html {
-  background: var(--bg, oklch(0.975 0.008 95));
-  color: var(--fg, oklch(0.28 0.025 260));
-}
-
-html[data-theme="dark"] {
-  background: var(--bg, oklch(0.22 0.018 260));
-  color: var(--fg, oklch(0.93 0.012 95));
+  background: var(--pym-bg);
+  color: var(--pym-text);
 }
 
 body,
 button,
 input,
 select {
-  font-family: ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: var(--pym-font-sans);
+  letter-spacing: var(--pym-tracking-normal);
 }
 
 button,
 select {
   color: inherit;
+  box-shadow: var(--pym-shadow-none);
+}
+
+button:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: var(--pym-focus-width) solid var(--pym-focus);
+  outline-offset: var(--pym-focus-offset);
 }
 
 .app {
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--pym-bg);
+  color: var(--pym-text);
+  box-shadow: var(--pym-shadow-none);
 }
 
 .toolbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.4rem 0.65rem;
-  padding: 0.4rem 0.65rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-elevated);
+  gap: var(--pym-space-8);
+  padding: var(--pym-space-8) var(--pym-space-16);
+  border-bottom: 1px solid var(--pym-border);
+  background: var(--pym-surface);
 }
 
 .toolbar-brand {
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  font-size: 1.05rem;
-  padding: 0 0.35rem;
-  color: var(--accent);
+  font-weight: var(--pym-weight-semibold);
+  letter-spacing: var(--pym-tracking-wordmark);
+  font-size: var(--pym-font-size-heading);
+  line-height: var(--pym-leading-heading);
+  padding: 0 var(--pym-space-8);
+  color: var(--pym-text);
 }
 
 .toolbar-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.2rem;
-  padding: 0.15rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-sunken);
+  align-items: center;
+  gap: var(--pym-space-8);
 }
 
-.toolbar-group button {
-  appearance: none;
-  background: transparent;
-  border: 0;
-  border-radius: 5px;
-  min-height: 28px;
-  padding: 0 0.45rem;
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--fg);
-}
-
-.toolbar-group button:hover {
-  background: oklch(from var(--accent) l c h / 0.12);
-}
-
-.toolbar-group button[aria-pressed="true"] {
-  background: var(--accent);
-  color: var(--accent-fg);
+.toolbar .pym-btn {
+  padding: var(--pym-space-8) var(--pym-space-16);
+  min-height: 32px;
 }
 
 .toolbar-select {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0 0.35rem;
-  color: var(--fg-muted);
+  gap: var(--pym-space-8);
+  color: var(--pym-text-muted);
 }
 
 .toolbar-select select {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 5px;
-  padding: 0.15rem 0.3rem;
-  font-size: 0.75rem;
+  background: var(--pym-bg);
+  color: var(--pym-text);
+  border: 1px solid var(--pym-button-secondary-border);
+  border-radius: var(--pym-radius-control);
+  padding: var(--pym-space-8);
+  font-family: var(--pym-font-sans);
+  font-size: var(--pym-font-size-ui);
+  font-weight: var(--pym-weight-medium);
+  letter-spacing: var(--pym-tracking-ui);
+  text-transform: none;
 }
 
 .toolbar-spacer {
@@ -125,26 +120,21 @@ select {
 }
 
 .outline {
-  border-right: 1px solid var(--border);
-  background: var(--bg-sunken);
+  border-right: 1px solid var(--pym-border);
+  background: var(--pym-surface);
   overflow: auto;
-  padding: 0.75rem 0.6rem 1.5rem;
+  padding: var(--pym-space-16) var(--pym-space-16) var(--pym-space-24);
   min-height: 0;
 }
 
 .outline-title {
-  margin: 0 0 0.6rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--fg-muted);
+  margin: 0 0 var(--pym-space-16);
 }
 
 .outline-empty {
   margin: 0;
-  font-size: 0.8rem;
-  color: var(--fg-muted);
+  font-size: var(--pym-font-size-ui);
+  color: var(--pym-text-muted);
 }
 
 .outline-list {
@@ -159,25 +149,28 @@ select {
   text-align: left;
   background: transparent;
   border: 0;
-  border-radius: 5px;
-  color: var(--fg);
+  border-radius: var(--pym-radius-control);
+  box-shadow: var(--pym-shadow-none);
+  color: var(--pym-text);
   cursor: pointer;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  padding: 0.28rem 0.4rem;
+  font-family: var(--pym-font-sans);
+  font-size: var(--pym-font-size-ui);
+  font-weight: var(--pym-weight-regular);
+  line-height: var(--pym-leading-ui);
+  padding: var(--pym-space-8);
 }
 
 .outline-list button:hover {
-  background: oklch(from var(--accent) l c h / 0.12);
+  background: color-mix(in srgb, var(--pym-accent) 12%, transparent);
 }
 
 .outline-l2 button {
-  padding-left: 0.9rem;
+  padding-left: var(--pym-space-16);
 }
 
 .outline-l3 button {
-  padding-left: 1.4rem;
-  color: var(--fg-muted);
+  padding-left: var(--pym-space-24);
+  color: var(--pym-text-muted);
 }
 
 .panes {
@@ -208,56 +201,78 @@ select {
 
 .divider {
   cursor: col-resize;
-  background: var(--border);
+  background: var(--pym-border);
 }
 
-.divider:hover {
-  background: var(--accent);
+.divider:hover,
+.divider:focus-visible {
+  background: var(--pym-accent);
 }
 
 .preview-wrap {
   overflow: hidden;
-  background: var(--bg-elevated);
-  border-left: 1px solid var(--border);
+  background: var(--pym-surface);
+  border-left: 1px solid var(--pym-border);
 }
 
 .preview-pane {
   height: 100%;
   overflow: auto;
-  padding: 1.4rem 1.6rem 3rem;
+  padding: var(--pym-space-24) var(--pym-space-24) var(--pym-space-48);
 }
 
 .status {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: var(--pym-space-16);
   align-items: center;
-  padding: 0.28rem 0.75rem;
-  border-top: 1px solid var(--border);
-  background: var(--bg-elevated);
-  color: var(--fg-muted);
-  font-size: 0.72rem;
-  font-variant-numeric: tabular-nums;
+  padding: var(--pym-space-8) var(--pym-space-16);
+  border-top: 1px solid var(--pym-border);
+  background: var(--pym-surface);
+  color: var(--pym-text-muted);
+  font-family: var(--pym-font-mono);
+  font-size: var(--pym-font-size-caption);
+  font-weight: var(--pym-weight-medium);
+  letter-spacing: var(--pym-tracking-caption);
+  line-height: var(--pym-leading-caption);
+  text-transform: uppercase;
 }
 
 .vim-chip {
   margin-left: auto;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--accent-fg);
-  background: var(--accent);
-  border-radius: 4px;
-  padding: 0.1rem 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: var(--pym-tracking-caption);
 }
 
 .vim-chip[data-mode="INSERT"] {
-  background: oklch(0.55 0.14 145);
+  background: var(--pym-color-sage);
+  color: var(--pym-text-on-light);
+}
+
+.vim-chip[data-mode="INSERT"]::before {
+  background: var(--pym-color-forest);
 }
 
 .vim-chip[data-mode="VISUAL"],
 .vim-chip[data-mode="V-LINE"],
 .vim-chip[data-mode="V-BLOCK"] {
-  background: oklch(0.58 0.14 55);
+  background: var(--pym-color-moss);
+  color: var(--pym-color-oat);
+}
+
+.vim-chip[data-mode="VISUAL"]::before,
+.vim-chip[data-mode="V-LINE"]::before,
+.vim-chip[data-mode="V-BLOCK"]::before {
+  background: var(--pym-color-oat);
+}
+
+.vim-chip[data-mode="EX"] {
+  background: var(--pym-color-forest);
+  color: var(--pym-color-oat);
+}
+
+.vim-chip[data-mode="EX"]::before {
+  background: var(--pym-color-beige);
 }
 
 @media (max-width: 720px) {
@@ -269,7 +284,7 @@ select {
   .outline {
     max-height: 7.5rem;
     border-right: 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--pym-border);
   }
 
   .panes[data-mode="split"] {
@@ -283,6 +298,6 @@ select {
 
   .preview-wrap {
     border-left: 0;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--pym-border);
   }
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { loadThemePref, saveThemePref } from "../storage.ts";
-import { applyPalette, type ResolvedTheme } from "./palettes.ts";
 
 export type ThemePref = "light" | "dark" | "system";
+export type ResolvedTheme = "light" | "dark";
 
 export function resolveTheme(pref: ThemePref): ResolvedTheme {
   if (pref === "light" || pref === "dark") {
@@ -11,6 +11,20 @@ export function resolveTheme(pref: ThemePref): ResolvedTheme {
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
+}
+
+/** System leaves `data-theme` unset so `tokens.css` follows `prefers-color-scheme`. */
+export function applyDocumentTheme(
+  pref: ThemePref,
+  resolved: ResolvedTheme,
+): void {
+  const root = document.documentElement;
+  if (pref === "system") {
+    delete root.dataset.theme;
+  } else {
+    root.dataset.theme = pref;
+  }
+  root.style.colorScheme = resolved;
 }
 
 export function useTheme(): {
@@ -29,7 +43,7 @@ export function useTheme(): {
     const apply = () => {
       const next = resolveTheme(pref);
       setResolved(next);
-      applyPalette(next);
+      applyDocumentTheme(pref, next);
     };
 
     apply();

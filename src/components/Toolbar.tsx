@@ -37,6 +37,8 @@ export function Toolbar({
   onReset,
 }: ToolbarProps) {
   const mod = isMac ? "⌘" : "Ctrl+";
+  const tone = (pressed = false) =>
+    pressed ? "pym-btn" : "pym-btn pym-btn--secondary";
 
   return (
     <header className="toolbar">
@@ -45,6 +47,7 @@ export function Toolbar({
       <div className="toolbar-group" role="group" aria-label="Inline">
         <button
           type="button"
+          className={tone()}
           title={`Bold (${mod}B)`}
           onClick={() => onFormat({ kind: "wrap", before: "**", after: "**" })}
         >
@@ -52,6 +55,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title={`Italic (${mod}I)`}
           onClick={() => onFormat({ kind: "wrap", before: "*", after: "*" })}
         >
@@ -59,6 +63,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title={`Strikethrough (${mod}Shift+X)`}
           onClick={() => onFormat({ kind: "wrap", before: "~~", after: "~~" })}
         >
@@ -66,6 +71,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title={`Inline code (${mod}E)`}
           onClick={() => onFormat({ kind: "wrap", before: "`", after: "`" })}
         >
@@ -76,6 +82,7 @@ export function Toolbar({
       <div className="toolbar-group" role="group" aria-label="Blocks">
         <button
           type="button"
+          className={tone()}
           title="Heading 1"
           onClick={() => onFormat({ kind: "heading", level: 1 })}
         >
@@ -83,6 +90,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Heading 2"
           onClick={() => onFormat({ kind: "heading", level: 2 })}
         >
@@ -90,6 +98,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Heading 3"
           onClick={() => onFormat({ kind: "heading", level: 3 })}
         >
@@ -97,6 +106,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Bullet list"
           onClick={() => onFormat({ kind: "prefix", prefix: "- " })}
         >
@@ -104,6 +114,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Numbered list"
           onClick={() => onFormat({ kind: "prefix", prefix: "1. " })}
         >
@@ -111,6 +122,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Task list"
           onClick={() => onFormat({ kind: "prefix", prefix: "- [ ] " })}
         >
@@ -118,6 +130,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Quote"
           onClick={() => onFormat({ kind: "prefix", prefix: "> " })}
         >
@@ -125,6 +138,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Code fence"
           onClick={() => onFormat({ kind: "fence" })}
         >
@@ -132,6 +146,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title={`Link (${mod}K)`}
           onClick={() => onFormat({ kind: "link" })}
         >
@@ -139,6 +154,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Image"
           onClick={() => onFormat({ kind: "image" })}
         >
@@ -146,6 +162,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone()}
           title="Table"
           onClick={() => onFormat({ kind: "table" })}
         >
@@ -156,6 +173,7 @@ export function Toolbar({
       <div className="toolbar-group" role="group" aria-label="View">
         <button
           type="button"
+          className={tone(viewMode === "editor")}
           aria-pressed={viewMode === "editor"}
           onClick={() => onViewMode("editor")}
         >
@@ -163,6 +181,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone(viewMode === "split")}
           aria-pressed={viewMode === "split"}
           onClick={() => onViewMode("split")}
         >
@@ -170,6 +189,7 @@ export function Toolbar({
         </button>
         <button
           type="button"
+          className={tone(viewMode === "preview")}
           aria-pressed={viewMode === "preview"}
           onClick={() => onViewMode("preview")}
         >
@@ -178,7 +198,7 @@ export function Toolbar({
       </div>
 
       <div className="toolbar-group" role="group" aria-label="Theme">
-        <label className="toolbar-select">
+        <label className="toolbar-select pym-eyebrow">
           Theme
           <select
             value={themePref}
@@ -196,6 +216,7 @@ export function Toolbar({
         </label>
         <button
           type="button"
+          className={tone(vimEnabled)}
           aria-pressed={vimEnabled}
           title="Toggle Vim keybindings"
           onClick={() => onVim(!vimEnabled)}
@@ -207,22 +228,22 @@ export function Toolbar({
       <div className="toolbar-spacer" />
 
       <div className="toolbar-group" role="group" aria-label="File">
-        <button type="button" onClick={() => onCopy("markdown")}>
+        <button type="button" className={tone()} onClick={() => onCopy("markdown")}>
           {copied === "markdown" ? "Copied" : "Copy MD"}
         </button>
-        <button type="button" onClick={() => onCopy("richtext")}>
+        <button type="button" className={tone()} onClick={() => onCopy("richtext")}>
           {copied === "richtext" ? "Copied" : "Copy rich text"}
         </button>
-        <button type="button" onClick={onOpen}>
+        <button type="button" className={tone()} onClick={onOpen}>
           Open
         </button>
-        <button type="button" onClick={() => onDownload("markdown")}>
+        <button type="button" className={tone()} onClick={() => onDownload("markdown")}>
           .md
         </button>
-        <button type="button" onClick={() => onDownload("html")}>
+        <button type="button" className={tone()} onClick={() => onDownload("html")}>
           .html
         </button>
-        <button type="button" onClick={onReset}>
+        <button type="button" className={tone()} onClick={onReset}>
           Sample
         </button>
       </div>
