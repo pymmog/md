@@ -2,11 +2,11 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App.tsx";
 import { loadThemePref } from "./storage.ts";
-import { applyPalette } from "./theme/palettes.ts";
-import { resolveTheme } from "./theme/useTheme.ts";
+import { applyDocumentTheme, resolveTheme } from "./theme/useTheme.ts";
 import "./styles.css";
 
-applyPalette(resolveTheme(loadThemePref()));
+const pref = loadThemePref();
+applyDocumentTheme(pref, resolveTheme(pref));
 
 const root = document.getElementById("root");
 if (!root) {

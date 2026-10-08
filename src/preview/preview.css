@@ -1,7 +1,62 @@
+/*
+ * Rendered markdown. Syntax ink is limited to pairs that stay at or above
+ * WCAG AA 4.5:1 on the page, on surface, and on the active-line / selection
+ * tints. Brown is 4.51:1 on oat and drops below 4.5 on any tint, so it is
+ * reserved for the solid search-match chip (oat on brown), not running text.
+ */
+
+:root,
+[data-theme="light"] {
+  --md-active-line: color-mix(in srgb, var(--pym-color-sage) 22%, var(--pym-bg));
+  --md-selection: color-mix(in srgb, var(--pym-color-sage) 42%, var(--pym-bg));
+  --md-code-bg: var(--pym-surface);
+  --md-syn-heading: var(--pym-color-forest);
+  --md-syn-keyword: var(--pym-color-forest);
+  --md-syn-string: var(--pym-color-moss-deep);
+  --md-syn-comment: var(--pym-color-moss);
+  --md-syn-number: var(--pym-color-forest);
+  --md-syn-literal: var(--pym-color-moss-deep);
+  --md-syn-punctuation: var(--pym-color-moss);
+  --md-syn-link: var(--pym-accent);
+}
+
+[data-theme="dark"] {
+  --md-active-line: var(--pym-surface);
+  --md-selection: color-mix(in srgb, var(--pym-color-sage) 24%, var(--pym-bg));
+  --md-code-bg: var(--pym-surface);
+  --md-syn-heading: var(--pym-color-oat);
+  --md-syn-keyword: var(--pym-color-beige);
+  --md-syn-string: var(--pym-color-sage);
+  --md-syn-comment: var(--pym-color-beige);
+  --md-syn-number: var(--pym-color-oat);
+  --md-syn-literal: var(--pym-color-beige);
+  --md-syn-punctuation: var(--pym-color-sage);
+  --md-syn-link: var(--pym-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --md-active-line: var(--pym-surface);
+    --md-selection: color-mix(in srgb, var(--pym-color-sage) 24%, var(--pym-bg));
+    --md-code-bg: var(--pym-surface);
+    --md-syn-heading: var(--pym-color-oat);
+    --md-syn-keyword: var(--pym-color-beige);
+    --md-syn-string: var(--pym-color-sage);
+    --md-syn-comment: var(--pym-color-beige);
+    --md-syn-number: var(--pym-color-oat);
+    --md-syn-literal: var(--pym-color-beige);
+    --md-syn-punctuation: var(--pym-color-sage);
+    --md-syn-link: var(--pym-accent);
+  }
+}
+
 .preview {
-  color: var(--fg);
-  font-size: 1.02rem;
-  line-height: 1.65;
+  color: var(--pym-text);
+  font-family: var(--pym-font-sans);
+  font-size: var(--pym-font-size-body);
+  font-weight: var(--pym-weight-regular);
+  line-height: var(--pym-leading-body);
+  letter-spacing: var(--pym-tracking-normal);
   word-wrap: break-word;
 }
 
@@ -12,25 +67,40 @@
 .preview h1,
 .preview h2,
 .preview h3,
-.preview h4 {
-  font-weight: 650;
-  line-height: 1.25;
-  margin: 1.6em 0 0.6em;
-  letter-spacing: -0.02em;
+.preview h4,
+.preview h5,
+.preview h6 {
+  font-family: var(--pym-font-sans);
+  font-weight: var(--pym-weight-medium);
+  margin: var(--pym-space-24) 0 var(--pym-space-8);
 }
 
 .preview h1 {
-  font-size: 1.85rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 0.35em;
+  font-size: var(--pym-font-size-title);
+  line-height: var(--pym-leading-title);
+  letter-spacing: var(--pym-tracking-title);
+  border-bottom: 1px solid var(--pym-border);
+  padding-bottom: var(--pym-space-8);
 }
 
 .preview h2 {
-  font-size: 1.4rem;
+  font-size: var(--pym-font-size-heading);
+  line-height: var(--pym-leading-heading);
+  letter-spacing: var(--pym-tracking-heading);
 }
 
 .preview h3 {
-  font-size: 1.15rem;
+  font-size: var(--pym-font-size-body);
+  line-height: var(--pym-leading-heading);
+  letter-spacing: var(--pym-tracking-heading);
+}
+
+.preview h4,
+.preview h5,
+.preview h6 {
+  font-size: var(--pym-font-size-ui);
+  line-height: var(--pym-leading-ui);
+  letter-spacing: var(--pym-tracking-ui);
 }
 
 .preview p,
@@ -40,86 +110,93 @@
 .preview pre,
 .preview table,
 .preview hr {
-  margin: 0.9em 0;
+  margin: var(--pym-space-16) 0;
 }
 
 .preview a {
-  color: var(--accent);
+  color: var(--md-syn-link);
   text-underline-offset: 0.15em;
 }
 
 .preview a:hover {
-  color: oklch(from var(--accent) calc(l - 0.06) c h);
+  text-decoration-thickness: 2px;
 }
 
 .preview strong {
-  font-weight: 650;
+  font-weight: var(--pym-weight-semibold);
 }
 
 .preview blockquote {
-  border-left: 3px solid var(--accent);
-  color: var(--fg-muted);
+  border-left: 1px solid var(--pym-accent);
+  color: var(--pym-text-muted);
   margin-left: 0;
-  padding: 0.15em 0 0.15em 1em;
+  padding: 0 0 0 var(--pym-space-16);
 }
 
 .preview ul,
 .preview ol {
-  padding-left: 1.4em;
+  padding-left: var(--pym-space-24);
 }
 
 .preview li + li {
-  margin-top: 0.2em;
+  margin-top: var(--pym-space-8);
 }
 
 .preview .contains-task-list {
   list-style: none;
-  padding-left: 0.2em;
+  padding-left: 0;
 }
 
 .preview .task-list-item {
   display: flex;
-  gap: 0.5em;
+  gap: var(--pym-space-8);
   align-items: flex-start;
 }
 
 .preview .task-list-item input {
   margin-top: 0.35em;
-  accent-color: var(--accent);
+  accent-color: var(--pym-accent);
+  width: 1em;
+  height: 1em;
+  opacity: 1;
 }
 
 .preview code {
-  font-family: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+  font-family: var(--pym-font-mono);
   font-size: 0.88em;
-  background: var(--code-bg);
-  border-radius: 4px;
+  background: var(--md-code-bg);
+  border: 1px solid var(--pym-border);
+  border-radius: var(--pym-radius-card);
   padding: 0.12em 0.38em;
 }
 
 .preview pre {
-  background: var(--code-bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  background: var(--md-code-bg);
+  border: 1px solid var(--pym-border);
+  border-radius: var(--pym-radius-card);
+  box-shadow: var(--pym-shadow-none);
   overflow: auto;
-  padding: 0.9em 1em;
+  padding: var(--pym-space-16);
 }
 
 .preview pre code {
   background: transparent;
+  border: 0;
   padding: 0;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: var(--pym-font-size-ui);
+  line-height: var(--pym-leading-body);
 }
 
 .preview hr {
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--pym-border);
+  height: 0;
 }
 
 .preview img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: var(--pym-radius-card);
 }
 
 .preview table {
@@ -131,64 +208,76 @@
 
 .preview th,
 .preview td {
-  border: 1px solid var(--border);
-  padding: 0.4em 0.7em;
+  border: 1px solid var(--pym-border);
+  padding: var(--pym-space-8) var(--pym-space-16);
   text-align: left;
 }
 
 .preview th {
-  background: var(--bg-sunken);
-  font-weight: 600;
+  background: var(--pym-ticker-bg);
+  color: var(--pym-ticker-text);
+  font-weight: var(--pym-weight-medium);
 }
 
 .preview del {
-  color: var(--fg-muted);
+  color: var(--pym-text-muted);
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-type {
-  color: var(--syn-keyword);
+.hljs-type,
+.hljs-template-tag,
+.hljs-name {
+  color: var(--md-syn-keyword);
+  font-weight: var(--pym-weight-medium);
 }
 
 .hljs-string,
-.hljs-addition {
-  color: var(--syn-string);
+.hljs-addition,
+.hljs-doctag,
+.hljs-regexp {
+  color: var(--md-syn-string);
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: var(--syn-comment);
+  color: var(--md-syn-comment);
   font-style: italic;
 }
 
-.hljs-number {
-  color: var(--syn-number);
+.hljs-number,
+.hljs-literal,
+.hljs-bullet {
+  color: var(--md-syn-number);
 }
 
-.hljs-literal,
 .hljs-built_in,
-.hljs-attr {
-  color: var(--syn-literal);
+.hljs-attr,
+.hljs-attribute,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-params,
+.hljs-property {
+  color: var(--md-syn-literal);
 }
 
 .hljs-title,
 .hljs-section,
-.hljs-name,
-.hljs-function {
-  color: var(--syn-heading);
+.hljs-title.function_,
+.hljs-title.class_ {
+  color: var(--md-syn-heading);
+  font-weight: var(--pym-weight-medium);
 }
 
 .hljs-punctuation,
-.hljs-tag {
-  color: var(--syn-punctuation);
-}
-
-.hljs-variable,
-.hljs-template-variable {
-  color: var(--syn-heading);
+.hljs-meta,
+.hljs-symbol,
+.hljs-operator,
+.hljs-tag,
+.hljs-link {
+  color: var(--md-syn-punctuation);
 }
 
 .hljs-deletion {
-  color: var(--danger);
+  color: var(--md-syn-keyword);
 }

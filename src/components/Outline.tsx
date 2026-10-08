@@ -8,7 +8,7 @@ type OutlineProps = {
 export function Outline({ items, onJump }: OutlineProps) {
   return (
     <nav className="outline" aria-label="Headings">
-      <h2 className="outline-title">Outline</h2>
+      <h2 className="outline-title pym-eyebrow">Outline</h2>
       {items.length === 0 ? (
         <p className="outline-empty">No headings yet</p>
       ) : (

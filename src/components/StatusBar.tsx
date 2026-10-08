@@ -27,7 +27,7 @@ export function StatusBar({ counts, line, col, vimMode }: StatusBarProps) {
       <span>{counts.chars} chars</span>
       <span>{reading}</span>
       {vimMode ? (
-        <span className="vim-chip" data-mode={vimMode}>
+        <span className="pym-badge vim-chip" data-mode={vimMode}>
           {vimMode}
         </span>
       ) : null}

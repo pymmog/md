@@ -1,12 +1,38 @@
 import previewCss from "../preview/preview.css?raw";
-import { paletteToCss, palettes, type ResolvedTheme } from "../theme/palettes.ts";
+import tokensCss from "../vendor/pymdesigntoken/tokens.css?raw";
+import type { ResolvedTheme } from "../theme/useTheme.ts";
+
+const fontCss = `@font-face {
+  font-family: "Geist Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-mono/GeistMono-Variable.woff2") format("woff2");
+}
+:root {
+  --font-geist-sans: "Geist Sans";
+  --font-geist-mono: "Geist Mono";
+}`;
 
 export function exportHtmlDocument(args: {
   html: string;
   title: string;
   theme: ResolvedTheme;
 }): string {
-  const tokens = paletteToCss(palettes[args.theme]);
   return `<!doctype html>
 <html lang="en" data-theme="${args.theme}">
 <head>
@@ -14,15 +40,18 @@ export function exportHtmlDocument(args: {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(args.title)}</title>
   <style>
-${tokens}
-html { color-scheme: ${args.theme}; background: var(--bg); color: var(--fg); }
+${fontCss}
+${tokensCss}
+${previewCss}
+html { background: var(--pym-bg); color: var(--pym-text); }
 body {
   margin: 0 auto;
   max-width: 46rem;
-  padding: 2.5rem 1.25rem 4rem;
-  font-family: ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+  padding: var(--pym-space-48) var(--pym-space-24) var(--pym-space-96);
+  background: var(--pym-bg);
+  color: var(--pym-text);
+  font-family: var(--pym-font-sans);
 }
-${previewCss}
   </style>
 </head>
 <body>
